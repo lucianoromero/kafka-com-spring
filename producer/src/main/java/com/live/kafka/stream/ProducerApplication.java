@@ -1,4 +1,4 @@
-package com.live.kafka.producer;
+package com.live.kafka.stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

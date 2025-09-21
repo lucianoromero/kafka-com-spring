@@ -1,7 +1,7 @@
-package com.live.kafka.producer.producer;
+package com.live.kafka.stream.producer;
 
-import com.live.kafka.producer.controller.CarDTO;
-import com.live.kafka.producer.exception.ProducerException;
+import com.live.kafka.stream.controller.CarDTO;
+import com.live.kafka.stream.exception.ProducerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

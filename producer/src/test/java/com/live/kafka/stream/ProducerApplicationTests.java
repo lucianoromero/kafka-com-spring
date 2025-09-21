@@ -1,4 +1,4 @@
-package com.live.kafka.producer;
+package com.live.kafka.stream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

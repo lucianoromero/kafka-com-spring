@@ -1,4 +1,4 @@
-package com.live.kafka.producer.controller;
+package com.live.kafka.stream.controller;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.live.kafka.producer.exception;
+package com.live.kafka.stream.exception;
 
 public class ProducerException extends RuntimeException {
 

@@ -1,6 +1,6 @@
-package com.live.kafka.producer.controller;
+package com.live.kafka.stream.controller;
 
-import com.live.kafka.producer.producer.CarProducer;
+import com.live.kafka.stream.producer.CarProducer;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
