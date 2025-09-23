@@ -1,6 +1,8 @@
 package com.live.kafka.stream.config;
 
 import com.live.kafka.stream.controller.CarDTO;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -23,7 +25,7 @@ public class KafkaConfig {
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Value(value = "${spring.kafka.group-id}")
+    @Value(value = "${spring.kafka.consumer.group-id}")
     private String groupId;
 
     @Value(value = "${topic.name}")

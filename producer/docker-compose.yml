@@ -2,6 +2,7 @@ version: '2'
 
 services:
 
+# Serviço de coordenação utilizado pelo Kafka para gerenciar o cluster e manter informações de estado.
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.1
     hostname: zookeeper
@@ -12,6 +13,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
+# Serviço principal do Kafka, responsável por armazenar, publicar e consumir mensagens.
   broker:
     image: confluentinc/cp-kafka:5.5.1
     hostname: broker
@@ -33,25 +35,27 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
 
-  schema-registry:
-    image: confluentinc/cp-schema-registry:5.5.1
-    hostname: schema-registry
-    container_name: schema-registry
-    depends_on:
-      - zookeeper
-      - broker
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
+# Serviço para gerenciar e validar esquemas Avro usados nas mensagens do Kafka.
+#  schema-registry:
+#    image: confluentinc/cp-schema-registry:5.5.1
+#    hostname: schema-registry
+#    container_name: schema-registry
+#    depends_on:
+#      - zookeeper
+#      - broker
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+#      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
 
+# Serviço que permite interagir com o Kafka via API REST, facilitando integração com aplicações HTTP.
   rest-proxy:
     image: confluentinc/cp-kafka-rest:5.5.1
     depends_on:
       - zookeeper
       - broker
-      - schema-registry
+#      - schema-registry
     ports:
       - 8082:8082
     hostname: rest-proxy
@@ -62,6 +66,7 @@ services:
       KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
 
+# Interface gráfica web para visualizar tópicos, mensagens e consumidores do Kafka.
   kafdrop:
     image: obsidiandynamics/kafdrop:3.27.0
     depends_on:
@@ -70,3 +75,5 @@ services:
       - 9000:9000
     environment:
       KAFKA_BROKERCONNECT: broker:29092
+
+# O link para acessar a interface gráfica do Kafdrop é: http://localhost:9000

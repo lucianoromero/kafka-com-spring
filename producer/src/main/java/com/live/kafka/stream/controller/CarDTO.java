@@ -1,11 +1,10 @@
 package com.live.kafka.stream.controller;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarDTO {
 
     @NonNull

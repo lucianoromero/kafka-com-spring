@@ -1,7 +1,6 @@
 package com.live.kafka.stream.controller;
 
 import com.live.kafka.stream.producer.CarProducer;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -13,10 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/cars")
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class CarController {
 
-    private CarProducer carProducer;
+    private final CarProducer carProducer;
 
     @PostMapping
     public ResponseEntity<CarDTO> create(@RequestBody @Validated CarDTO carDTO) {
